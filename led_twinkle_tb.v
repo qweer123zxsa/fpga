@@ -12,7 +12,7 @@ led_twinkle led_twinkle_inst_0(
     .led(led_tb)
 );
 
-always #10 clk_tb = ~clk_tb;
+always #30 clk_tb = ~clk_tb;
 
 //initial begin ... end 是 仿真用的“初始过程块”。
 //它的作用是：
