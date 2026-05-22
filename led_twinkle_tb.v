@@ -22,7 +22,7 @@ always #30 clk_tb = ~clk_tb;
 
 initial begin
     rst_tb = 0;
-    #201;
+    #203;
     rst_tb = 1;
     #2000000000;
     $stop;
