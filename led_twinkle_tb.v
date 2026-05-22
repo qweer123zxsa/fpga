@@ -1,4 +1,4 @@
-`timescale 1ns/1ns;
+`timescale 1ns/1ns
 
 module led_twinkle_tb();
 
@@ -28,3 +28,4 @@ initial begin
     $stop;
 end
 
+endmodule
