@@ -1,0 +1,407 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  background: #0f1115;
+  color: #e5e7eb;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 1px solid #2f3949;
+  background: #1c2431;
+  color: #dbe4f3;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #283246;
+}
+
+.app-shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-fallback-shell {
+  display: grid;
+  place-items: center;
+}
+
+.browser-fallback-card {
+  text-align: center;
+  color: #a7b7cf;
+}
+
+.topbar {
+  height: 48px;
+  border-bottom: 1px solid #242b36;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  background: #141821;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.resize-handle {
+  width: 6px;
+  background: #151b26;
+  border-left: 1px solid #222a38;
+  border-right: 1px solid #222a38;
+}
+
+.resize-handle.horizontal {
+  width: auto;
+  height: 6px;
+}
+
+.workspace-pane,
+.editor-pane,
+.chat-pane,
+.terminal-pane {
+  height: 100%;
+  background: #10141c;
+}
+
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.editor-tabs {
+  height: 36px;
+  border-bottom: 1px solid #222a38;
+  background: #121821;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  padding: 0 6px;
+  gap: 4px;
+}
+
+.editor-tab {
+  border-radius: 6px;
+  background: #172031;
+  border: 1px solid #253148;
+  padding: 4px 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.editor-tab.active {
+  background: #2a3b57;
+}
+
+.workspace-pane,
+.chat-pane,
+.terminal-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.workspace-header,
+.chat-header,
+.terminal-header,
+.editor-toolbar {
+  height: 42px;
+  border-bottom: 1px solid #222a38;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: #151b26;
+}
+
+.workspace-actions,
+.editor-actions,
+.terminal-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.workspace-path {
+  padding: 8px 10px;
+  border-bottom: 1px solid #1d2533;
+  color: #93a0b3;
+  font-size: 12px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #1d2533;
+}
+
+.search-box input {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #2b3445;
+  background: #0f141d;
+  color: #d5def0;
+  padding: 6px 8px;
+}
+
+.tree-scroll {
+  overflow: auto;
+  padding: 6px 0;
+}
+
+.tree-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #d7dfef;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tree-item:hover {
+  background: #1a2331;
+}
+
+.tree-item.selected {
+  background: #253248;
+}
+
+.expanded {
+  transform: rotate(90deg);
+}
+
+.search-results {
+  overflow: auto;
+  padding: 8px;
+}
+
+.search-title {
+  font-size: 12px;
+  color: #92a0b6;
+  margin-bottom: 6px;
+}
+
+.search-item {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #253040;
+  background: #121a25;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.search-file {
+  font-size: 12px;
+  color: #b9c7de;
+}
+
+.search-preview {
+  font-size: 12px;
+  color: #8e9bb0;
+}
+
+.editor-pane.empty {
+  display: grid;
+  place-items: center;
+  color: #8f9eb5;
+}
+
+.file-name {
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.chat-body {
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #283245;
+  background: #131a24;
+}
+
+.message.user {
+  border-color: #2f4f74;
+  background: #122030;
+}
+
+.message-role {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #8f9fba;
+  margin-bottom: 4px;
+}
+
+.message-content {
+  white-space: pre-wrap;
+  font-size: 13px;
+}
+
+.tool-trace {
+  border: 1px dashed #32445f;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.tool-trace pre {
+  white-space: pre-wrap;
+  margin: 6px 0 0;
+  color: #aebad0;
+}
+
+.chat-footer {
+  border-top: 1px solid #202938;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-status {
+  font-size: 12px;
+  color: #8fa0b8;
+}
+
+.chat-footer textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 84px;
+  border: 1px solid #2c3750;
+  border-radius: 8px;
+  background: #0f141d;
+  color: #d3def2;
+  padding: 8px;
+}
+
+.terminal-input-row {
+  border-bottom: 1px solid #222a38;
+  padding: 8px;
+}
+
+.terminal-input-row input {
+  width: 100%;
+  border: 1px solid #2b3550;
+  border-radius: 8px;
+  background: #101722;
+  color: #d3def2;
+  padding: 6px 8px;
+}
+
+.terminal-output {
+  flex: 1;
+  margin: 0;
+  overflow: auto;
+  font-family: Consolas, monospace;
+  font-size: 12px;
+  padding: 10px;
+  color: #b7c9e2;
+}
+
+.modal-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 12, 18, 0.78);
+  display: grid;
+  place-items: center;
+  z-index: 40;
+}
+
+.modal-card {
+  width: min(560px, 92vw);
+  background: #121823;
+  border: 1px solid #2a3548;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-card.patch {
+  width: min(760px, 94vw);
+}
+
+.modal-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-card input,
+.modal-card select {
+  border: 1px solid #2b3549;
+  border-radius: 8px;
+  background: #0f141d;
+  color: #d4ddf2;
+  padding: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.patch-target {
+  font-size: 12px;
+  color: #8f9eb8;
+}
+
+.patch-content {
+  margin: 0;
+  max-height: 45vh;
+  overflow: auto;
+  background: #0c1018;
+  border: 1px solid #253146;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 12px;
+}

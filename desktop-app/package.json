@@ -1,0 +1,68 @@
+{
+  "name": "desktop-app",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Cursor-like Windows desktop coding assistant MVP",
+  "author": "local-dev",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev:web": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:electron": "wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "dev": "concurrently --kill-others-on-fail \"npm run dev:web\" \"npm run dev:electron\"",
+    "build:web": "tsc -b && vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "build": "npm run build:web && npm run build:electron",
+    "dist": "npm run build && electron-builder --win",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.demo.cursorlite",
+    "productName": "CursorLite",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "@xterm/addon-fit": "^0.11.0",
+    "electron-store": "^11.0.2",
+    "lucide-react": "^1.16.0",
+    "monaco-editor": "^0.52.2",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-monaco-editor": "^0.59.0",
+    "react-resizable-panels": "^4.11.2",
+    "xterm": "^5.3.0",
+    "zustand": "^5.0.13"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^42.2.0",
+    "electron-builder": "^26.8.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "tsx": "^4.22.3",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12",
+    "wait-on": "^9.0.10"
+  }
+}
